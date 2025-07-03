@@ -1,5 +1,6 @@
-import { Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Query, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Post, Query, ValidationPipe } from '@nestjs/common';
 import { PostsService } from './provider/posts.service';
+import { CreatePostDto } from './dtos/post.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -22,4 +23,9 @@ export class PostsController {
         return this.postService.findPostByUser(userId)
     }
 
+
+    @Post("/create-post")
+    createPost(@Body() data : CreatePostDto){
+        return this.postService.createPost(data)
+    }
 }

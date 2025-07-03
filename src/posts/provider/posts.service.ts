@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { console } from 'inspector';
 import { Users } from 'src/users/users';
+import { CreatePostDto } from '../dtos/post.dto';
 
 const postdata = [
     {
@@ -58,5 +59,12 @@ export class PostsService {
 
         const data = postdata.find(p=> p.userId === userId)
         return data 
+    }
+
+    createPost(data: CreatePostDto){
+        return {
+            msg:"data is created",
+            data
+        }
     }
 }
